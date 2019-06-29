@@ -61,7 +61,7 @@ function! s:get_command(buffer, version) abort
     return l:cmd
 endfunction
 
-call ale#linter#Define('pkgbuild', {
+call ale#linter#Define('PKGBUILD', {
 \   'name': 'shellcheck',
 \   'executable': {buffer -> ale#Var(buffer, 'sh_shellcheck_executable')},
 \   'command': {buffer -> ale#semver#RunWithVersionCheck(
