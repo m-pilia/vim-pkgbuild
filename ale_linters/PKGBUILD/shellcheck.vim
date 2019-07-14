@@ -2,6 +2,9 @@
 
 runtime! ale_linters/sh/shellcheck.vim
 
+" SC2164 is not necessary, since PKGBUILD runs with `set -e`
+let s:suppressions = ' -e SC2164'
+
 let s:pkgbuild_vars = [
 \    'pkgbase',
 \    'pkgname',
@@ -58,6 +61,7 @@ endfunction
 function! s:get_command(buffer, version) abort
     let l:cmd = ale_linters#sh#shellcheck#GetCommand(a:buffer, a:version)
     let l:cmd = substitute(l:cmd, '-s\s+\w+', '-s bash', '')
+    let l:cmd = substitute(l:cmd, '%e', '%e' . s:suppressions, '')
     return l:cmd
 endfunction
 
