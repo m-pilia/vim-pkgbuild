@@ -7,7 +7,7 @@ function! s:warn(message) abort
     echohl None
 endfunction
 
-function! pkgbuild#updpkgsums(bang) abort
+function! PKGBUILD#updpkgsums(bang) abort
     if !executable('updpkgsums')
         call s:warn('updpkgsums executable unavailable')
         return
@@ -29,7 +29,7 @@ function! pkgbuild#updpkgsums(bang) abort
     edit!
 endfunction
 
-function! pkgbuild#load_template() abort
+function! PKGBUILD#load_template() abort
     silent execute '0r ' . s:template_file
     set modified
 endfunction
