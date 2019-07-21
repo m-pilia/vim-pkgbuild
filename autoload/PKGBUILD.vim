@@ -17,19 +17,19 @@ function! s:check_exit_status(job, status, ...) abort
     edit!
 endfunction
 
-function! s:echo_line(buffer, channel, message) abort
+function! s:echo_line(channel, message) abort
     if !g:vim_pkgbuild_silent
         echom a:message
     endif
 endfunction
 
-function! s:nvim_callback(buffer, channel, data, stream) abort
+function! s:nvim_callback(channel, data, stream) abort
     if g:vim_pkgbuild_silent
         return
     endif
 
     for l:line in a:data
-        call s:echo_line(a:buffer, 0, l:line)
+        call s:echo_line(0, l:line)
     endfor
 endfunction
 
@@ -52,7 +52,7 @@ function! PKGBUILD#updpkgsums(bang) abort
 
     if has('nvim')
         call jobstart(l:command, {
-        \   'on_stdout': function('s:nvim_callback', [bufnr('%')]),
+        \   'on_stdout': function('s:nvim_callback'),
         \   'on_exit': function('s:check_exit_status'),
         \   'stdout_buffered': 1,
         \ })
@@ -63,7 +63,7 @@ function! PKGBUILD#updpkgsums(bang) abort
         endif
 
         call job_start(l:command, {
-        \   'out_cb': function('s:echo_line', [bufnr('%')]),
+        \   'out_cb': function('s:echo_line'),
         \   'exit_cb': function('s:check_exit_status'),
         \ })
     endif
