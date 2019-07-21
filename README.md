@@ -5,11 +5,11 @@ This plugin provides:
 * filetype detection and syntax highlighting for PKGBUILD files;
 * template for empty PKGBUILD files;
 * a *Updpkgsums* command, to update the pkgsums in the current file;
-* an [ALE](https://github.com/w0rp/ale) linter to run
-  [shellcheck](https://github.com/koalaman/shellcheck) on PKGBUILD files
-  without showing spurious errors due to PKGBUILD variables being undefined or
-  unused (for available configuration options, please refer to
-  |ale-sh-shellcheck|).
+* a linter to run [shellcheck](https://github.com/koalaman/shellcheck) on
+  PKGBUILD files without showing spurious errors due to PKGBUILD variables
+  being undefined or unused. The path to the linter executable can be retrieved
+  by calling `PKGBUILD#shellcheck()`. The plugin also provides out-of-the-box
+  integration with [ALE](https://github.com/w0rp/ale).
 
 # Install
 

@@ -1,4 +1,5 @@
 let s:template_file = expand('<sfile>:p:h:h') . '/template/PKGBUILD'
+let s:linter = expand('<sfile>:p:h:h') . '/scripts/shellcheck_pkgbuild.sh'
 
 function! s:warn(message) abort
     redraw
@@ -72,4 +73,32 @@ endfunction
 function! PKGBUILD#load_template() abort
     silent execute '0r ' . s:template_file
     set modified
+endfunction
+
+" Return the path to the shellcheck linter for PKGBUILD
+function! PKGBUILD#shellcheck() abort
+    return s:linter
+endfunction
+
+" Return settings dictionary for diagnostic-languageserver
+function! PKGBUILD#diagnostic_languageserver() abort
+    return {
+    \   'command': s:linter,
+    \   'args': ['%file'],
+    \   'sourceName': 'shellcheck',
+    \   'formatPattern': [
+    \       '^[^:]+:(\d+):(\d+):\s+([^:]+):\s+(.*)$',
+    \       {
+    \           'line': 1,
+    \           'column': 2,
+    \           'message': 4,
+    \           'security': 3,
+    \       },
+    \   ],
+    \   'securities': {
+    \       'error': 'error',
+    \       'warning': 'warning',
+    \       'note': 'info',
+    \   },
+    \ }
 endfunction
