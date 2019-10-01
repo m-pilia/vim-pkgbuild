@@ -34,7 +34,7 @@ function! s:nvim_callback(channel, data, stream) abort
     endfor
 endfunction
 
-function! PKGBUILD#updpkgsums(bang) abort
+function! pkgbuild#updpkgsums(bang) abort
     if !executable('updpkgsums')
         call s:warn('updpkgsums executable unavailable')
         return
@@ -70,18 +70,18 @@ function! PKGBUILD#updpkgsums(bang) abort
     endif
 endfunction
 
-function! PKGBUILD#load_template() abort
+function! pkgbuild#load_template() abort
     silent execute '0r ' . s:template_file
     set modified
 endfunction
 
 " Return the path to the shellcheck linter for PKGBUILD
-function! PKGBUILD#shellcheck() abort
+function! pkgbuild#shellcheck() abort
     return s:linter
 endfunction
 
 " Return settings dictionary for diagnostic-languageserver
-function! PKGBUILD#diagnostic_languageserver() abort
+function! pkgbuild#diagnostic_languageserver() abort
     return {
     \   'command': s:linter,
     \   'args': ['%file'],

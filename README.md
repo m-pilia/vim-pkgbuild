@@ -8,8 +8,10 @@ This plugin provides:
 * a linter to run [shellcheck](https://github.com/koalaman/shellcheck) on
   PKGBUILD files without showing spurious errors due to PKGBUILD variables
   being undefined or unused. The path to the linter executable can be retrieved
-  by calling `PKGBUILD#shellcheck()`. The plugin also provides out-of-the-box
-  integration with [ALE](https://github.com/w0rp/ale).
+  by calling `pkgbuild#shellcheck()`. The plugin also provides out-of-the-box
+  integration with [ALE](https://github.com/w0rp/ale). A settings dictionary
+  for [diagnostic-languageserver](https://github.com/iamcco/diagnostic-languageserver)
+  can be retrieved by calling `pkgbuild#diagnostic_languageserver()`.
 
 # Install
 

@@ -2,9 +2,9 @@
 
 runtime! ale_linters/sh/shellcheck.vim
 
-call ale#linter#Define('PKGBUILD', {
+call ale#linter#Define('pkgbuild', {
 \   'name': 'shellcheck',
-\   'executable': PKGBUILD#shellcheck(),
+\   'executable': pkgbuild#shellcheck(),
 \   'command': '%e %t',
 \   'callback': 'ale_linters#sh#shellcheck#Handle',
 \})
