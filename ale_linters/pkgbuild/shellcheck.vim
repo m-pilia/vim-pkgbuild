@@ -6,5 +6,5 @@ call ale#linter#Define('pkgbuild', {
 \   'name': 'shellcheck',
 \   'executable': pkgbuild#shellcheck(),
 \   'command': '%e %t',
-\   'callback': 'ale_linters#sh#shellcheck#Handle',
+\   'callback': 'ale#handlers#shellcheck#Handle',
 \})
