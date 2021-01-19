@@ -8,7 +8,7 @@ CONTENTS                                               *vim-pkgbuild-contents*
     Options.......................|vim-pkgbuild-options|
       g:vim_pkgbuild_silent.......|g:vim_pkgbuild_silent|
     Commands......................|vim-pkdbuild-commands|
-      Updpkgsums..................|Updpkgsums|
+      Updpkgsums..................|vim-pkgbuild-updpkgsums|
     License.......................|vim-pkdbuild-license|
 
 
@@ -18,7 +18,8 @@ INTRODUCTION                                       *vim-pkgbuild-introduction*
 The vim-pkgbuild plugin provides:
 * filetype detection and syntax highlighting for PKGBUILD files;
 * template for empty PKGBUILD files;
-* a *Updpkgsums* command, to update the pkgsums in the current file;
+* a |vim-pkgbuild-updpkgsums| command, to update the pkgsums in the current
+  file;
 * an |ale| linter to run shellcheck on PKGBUILD files without showing
   spurious errors due to PKGBUILD variables being undefined or unused (for
   available configuration options, please refer to |ale-sh-shellcheck|).
@@ -30,7 +31,7 @@ g:vim_pkgbuild_silent                                  *g:vim_pkgbuild_silent*
     Type: |Number|
     Default: `0`
 
-    If not 0, suppress output from `updpkgsums`.
+    If not 0, suppress output from |vim-pkgbuild-updpkgsums|.
 
     Example:
 >
@@ -41,7 +42,7 @@ g:vim_pkgbuild_silent                                  *g:vim_pkgbuild_silent*
 ==============================================================================
 Commands                                               *vim-pkgbuild-commands*
 
-Updpkgsums                                                        *Updpkgsums*
+Updpkgsums                                           *vim-pkgbuild-updpkgsums*
 
 Update the checksum values. Write pending changes if called with |bang|.
 
