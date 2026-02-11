@@ -15,7 +15,7 @@ function! s:check_exit_status(job, status, ...) abort
     endif
 
     echom 'Checksums updated'
-    edit!
+    silent checktime %
 endfunction
 
 function! s:echo_line(channel, message) abort
@@ -72,7 +72,6 @@ endfunction
 
 function! pkgbuild#load_template() abort
     silent execute '0r ' . s:template_file
-    set modified
 endfunction
 
 " Return the path to the shellcheck linter for PKGBUILD
