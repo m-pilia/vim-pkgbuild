@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead PKGBUILD set filetype=pkgbuild
+autocmd BufNewFile,BufRead PKGBUILD,*.PKGBUILD set filetype=pkgbuild
